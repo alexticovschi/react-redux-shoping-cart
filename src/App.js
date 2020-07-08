@@ -7,31 +7,22 @@ import cartItems from './cart-items';
 // redux
 import { createStore } from 'redux';
 import reducer from './reducer';
+import { Provider } from 'react-redux';
 
-const initialStore = {
-  number: 24,
-  player1: 'LeBron James',
-  player2: 'Anthony Davis',
+const initialState = {
+  cart: cartItems,
+  total: 0,
+  amount: 0,
 };
 
-const store = createStore(reducer, initialStore);
-store.dispatch({ type: 'DECREASE' });
-store.dispatch({ type: 'DECREASE' });
-store.dispatch({ type: 'INCREASE' });
-store.dispatch({ type: 'INCREASE' });
-store.dispatch({ type: 'DECREASE' });
-store.dispatch({ type: 'DECREASE' });
-
-console.log(store.getState());
+const store = createStore(reducer, initialState);
 
 function App() {
-  // cart setup
-
   return (
-    <main>
+    <Provider store={store}>
       <Navbar />
       <CartContainer cart={cartItems} />
-    </main>
+    </Provider>
   );
 }
 
