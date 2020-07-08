@@ -6,13 +6,23 @@ import CartContainer from './components/CartContainer';
 import cartItems from './cart-items';
 // redux
 import { createStore } from 'redux';
+import reducer from './reducer';
 
-// reducer
-const reducer = (state, action) => {
-  console.log({ state, action });
+const initialStore = {
+  number: 24,
+  player1: 'LeBron James',
+  player2: 'Anthony Davis',
 };
 
-const store = createStore(reducer);
+const store = createStore(reducer, initialStore);
+store.dispatch({ type: 'DECREASE' });
+store.dispatch({ type: 'DECREASE' });
+store.dispatch({ type: 'INCREASE' });
+store.dispatch({ type: 'INCREASE' });
+store.dispatch({ type: 'DECREASE' });
+store.dispatch({ type: 'DECREASE' });
+
+console.log(store.getState());
 
 function App() {
   // cart setup
