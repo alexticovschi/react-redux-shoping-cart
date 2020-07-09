@@ -25,26 +25,18 @@ const reducer = (state, action) => {
   }
 
   if (action.type === DECREASE) {
-    let newCart = [];
+    let newCart = state.cart.map((cartItem) => {
+      // console.log(cartItem);
 
-    if (action.payload.amount === 1) {
-      newCart = state.cart.filter(
-        (cartItem) => cartItem.id !== action.payload.id
-      );
-    } else {
-      newCart = state.cart.map((cartItem) => {
-        console.log(cartItem);
+      if (cartItem.id === action.payload.id) {
+        cartItem = {
+          ...cartItem,
+          amount: cartItem.amount > 1 ? cartItem.amount - 1 : 1,
+        };
+      }
 
-        if (cartItem.id === action.payload.id) {
-          cartItem = {
-            ...cartItem,
-            amount: cartItem.amount > 1 ? cartItem.amount - 1 : 1,
-          };
-        }
-
-        return cartItem;
-      });
-    }
+      return cartItem;
+    });
 
     return {
       ...state,
