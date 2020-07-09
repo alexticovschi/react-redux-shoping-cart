@@ -1,6 +1,17 @@
-export const INCREASE = 'INCREASE';
-export const DECREASE = 'DECREASE';
-export const REMOVE = 'REMOVE';
-export const CLEAR_CART = 'CLEAR_CART';
-export const GET_TOTAL = 'GET_TOTAL';
-export const TOGGLE_AMOUNT = 'TOGGLE_AMOUNT';
+import { INCREASE, DECREASE, CLEAR_CART, GET_TOTAL, REMOVE } from './constants';
+
+export const increaseItem = (id, amount) => ({
+  type: INCREASE,
+  payload: { id, amount },
+});
+
+export const decreaseItem = (id, amount) => ({
+  type: DECREASE,
+  payload: { id, amount },
+});
+
+export const getTotal = () => ({ type: GET_TOTAL });
+
+export const clearCart = () => ({ type: CLEAR_CART });
+
+export const removeItem = (id) => ({ type: REMOVE, payload: { id } });

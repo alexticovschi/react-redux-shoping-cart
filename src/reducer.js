@@ -1,4 +1,4 @@
-import { INCREASE, DECREASE, REMOVE, CLEAR_CART, GET_TOTAL } from './actions';
+import { INCREASE, DECREASE, REMOVE, CLEAR_CART, GET_TOTAL } from './constants';
 // items
 import cartItems from './cart-items';
 
