@@ -1,7 +1,15 @@
 import { INCREASE, DECREASE, REMOVE, CLEAR_CART, GET_TOTAL } from './actions';
+// items
+import cartItems from './cart-items';
+
+const initialState = {
+  cart: cartItems,
+  total: 0,
+  amount: 0,
+};
 
 // reducer
-const reducer = (state, action) => {
+const reducer = (state = initialState, action) => {
   console.log({ state, action });
 
   if (action.type === INCREASE) {
